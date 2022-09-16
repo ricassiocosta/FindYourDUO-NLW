@@ -18,9 +18,15 @@ export interface DouCardProps {
 interface Props {
   data: DouCardProps;
   onConnect: () => void;
+  onSelect: () => void;
 }
 
-export function DouCard({ data, onConnect }: Props) {
+export function DouCard({ data, onSelect, onConnect }: Props) {
+  function handlePress() {
+    onSelect()
+    onConnect()
+  }
+
   return (
     <View style={styles.container}>
       <DouInfo 
@@ -46,7 +52,7 @@ export function DouCard({ data, onConnect }: Props) {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={onConnect}
+        onPress={handlePress}
       >
         <GameController 
           color={THEME.COLORS.TEXT}

@@ -11,16 +11,24 @@ import { THEME } from '../../theme';
 import logoImg from "../../assets/logo-nlw-esports.png"
 import { Heading } from '../../components/Heading';
 import { DouCard, DouCardProps } from '../../components/DouCard';
+import { DouMatch } from '../../components/DouMatch';
 
 export function Game() {
   const navigation = useNavigation()
   const route = useRoute()
   const game = route.params as GameParams
   const [ ads, setAds ] = useState<DouCardProps[]>([])
-
+  const [ isDuoSelected, setIsDuoSelected ] = useState<boolean>(false)
+  const [ selectedDuoDiscord, setSelectedDuoDiscord ] = useState("")
 
   function handleGoBack() {
     navigation.goBack()
+  }
+
+  async function getDiscordUser(adsId: string) {
+    fetch(`http://192.168.15.11:3333/ads/${adsId}/discord`)
+      .then(response => response.json())
+      .then(data => setSelectedDuoDiscord(data.discord))
   }
 
   useEffect(() => {
@@ -65,7 +73,8 @@ export function Game() {
           renderItem={({ item }) => (
             <DouCard 
               data={item}
-              onConnect={() => {}}
+              onConnect={() => getDiscordUser(item.id)}
+              onSelect={() => setIsDuoSelected(true)}
             />
           )}
           horizontal
@@ -79,6 +88,12 @@ export function Game() {
               Não há anúncios publicados ainda.
             </Text>
           )}
+        />
+
+        <DouMatch 
+          visible={isDuoSelected}
+          discord={selectedDuoDiscord}
+          onClose={() => setIsDuoSelected(false)}
         />
 
       </SafeAreaView>
