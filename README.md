@@ -19,7 +19,7 @@
 </h1>
 
 <h4 align="center"> 
-	🚧 FindYourDUO ♻️ In-Progress 🚀 🚧
+	🚧 FindYourDUO 🎮 In-Progress 🚀 🚧
 </h4>
 
 <p align="center">
