@@ -65,6 +65,8 @@ O layout da aplicação está disponível no Figma:
 ### Mobile
 
 <p align="center">
+  <img alt="FindYourDUO" title="#FindYourDUO" src="./.github/app-demo.gif" width="200px">
+  
   <img alt="FindYourDUO" title="#FindYourDUO" src="./.github/app-home-screen.jpeg" width="200px">
 
   <img alt="FindYourDUO" title="#FindYourDUO" src="./.github/app-game-ads.jpeg" width="200px">
